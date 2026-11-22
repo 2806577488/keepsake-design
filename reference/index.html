@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Keepsake 三皮肤 · 全屏设计稿</title>
+<style>
+  body { margin: 0; padding: 40px 44px; background: #E2E7E4; color: #191C1B;
+    font-family: "PingFang SC", "HarmonyOS Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; }
+  h1 { font-size: 30px; margin: 0 0 8px; color: #2F6B5F; }
+  .lead { font-size: 15px; color: #4A5A55; line-height: 1.75; max-width: 900px; margin: 0 0 30px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; }
+  a.card { display: block; width: 380px; background: #F5FBF7; border: 1px solid #C6CFCA;
+    border-radius: 10px; padding: 22px 24px; text-decoration: none; color: inherit; }
+  a.card:hover { border-color: #2F6B5F; }
+  .card h2 { font-size: 20px; margin: 0 0 6px; color: #2F6B5F; }
+  .card p { margin: 0; font-size: 13px; color: #4A5A55; line-height: 1.65; }
+  .card .n { display: inline-block; margin-top: 12px; font-size: 12px; color: #046B5C;
+    border: 1px solid #8CCDBB; border-radius: 20px; padding: 3px 12px; }
+  .note { margin-top: 34px; font-size: 13px; color: #4A5A55; line-height: 1.8; max-width: 900px; }
+  .note b { color: #191C1B; }
+  code { background: #cfdad5; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>Keepsake · 三套皮肤全屏设计稿</h1>
+<p class="lead">
+  30 个屏 × 3 套皮肤。每个页面默认把三套都画出来，从上到下依次是
+  <b>A 清透</b> / <b>E 纸感</b> / <b>H 墨色</b>。尺寸 411dp × 892dp，1dp = 1px，浏览器里看到的就是真机比例。
+</p>
+
+<div class="cards">
+  <a class="card" href="full-list.html">
+    <h2>会话列表</h2>
+    <p>正常 / 空 / 加载中 / 加载失败 / 搜索 / 搜索无结果 / 导入中 / 导入失败 / 多选已选 / 多选 0 选中 / ⋮ 菜单 / 左滑删除 / 删除确认</p>
+    <span class="n">13 屏 × 3 套</span>
+  </a>
+  <a class="card" href="full-chat.html">
+    <h2>聊天页</h2>
+    <p>空会话 / 正常 / 思考展开 / 流式无正文 / 流式有正文 / 失败 / 超长正文 / 搜索结果面板 / 长按菜单 / 附件草稿 / 语音模式</p>
+    <span class="n">11 屏 × 3 套</span>
+  </a>
+  <a class="card" href="full-settings.html">
+    <h2>设置与弹层</h2>
+    <p>设置上半（AI 平台 + 对话默认 9 项）/ 设置下半（用量 + 后台任务 + 外观 + 数据 + 关于）/ 思考强度 / 导出 / 平台编辑 / 模型选择</p>
+    <span class="n">6 屏 × 3 套</span>
+  </a>
+</div>
+
+<div class="note">
+  <p><b>怎么对照工程师文档：</b>每一项都按 <code>design-handoff/README.md</code> §3 的 19 条硬约束和
+  <code>ui-logic.md</code> §3、§4 出稿。三套皮肤只切一组 CSS 变量（圆角 / 行高 / 字号 / 描边 / 字体 / 图标），
+  不写三份界面代码。</p>
+  <p><b>PNG 备份：</b>同目录 <code>screens/</code> 下有 9 张 1360 宽的静态图，命名是「序号-页面-皮肤」。</p>
+  <p><b>还没覆盖的：</b>深色模式（只有推导值，没采样）、横屏与平板、系统大字号 1.3×/1.5×、无障碍 Semantics、离线态。</p>
+</div>
+</body>
+</html>

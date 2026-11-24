@@ -1,5 +1,29 @@
 # 版本历史
 
+## v3.2 — 轻提示挪到顶部
+
+起因：聊天页点「思考」芯片，弹出的「思考：开（中）」用 SnackBar 贴在屏幕底部，
+正好盖住输入框和工具芯片（用户截图里画了红框）。
+
+### 设计侧（本次）
+
+- `SPEC.md` 新增 §4.9 轻提示（toast）：顶部浮层（状态栏 + 56 + 8）、
+  `inverseSurface` 底、`r-card` 圆角、14 号字、2s、120ms 淡入 + 8dp 上浮、
+  `IgnorePointer` 不拦手势；**禁止底部 SnackBar**（会压住输入区/工具条）。
+- `reference/full.css` 新增 `.toast` / `.toast .tt` / `@keyframes toast-in` 参考实现。
+- `CHECKLIST.md` 新增第 25 条：提示不许出现在底部输入区上方。
+- 不新增 token（沿用 M3 `inverseSurface` / `onInverseSurface` 与 `--r-card`）。
+
+### 工程侧（同步到 keepsake 仓库）
+
+- 新增 `lib/core/ui/toast.dart`：`showTopToast()` 用根 Overlay 画顶部浮层，
+  同屏只留一条、`IgnorePointer`、2s 自动消失、120ms 动画。
+- 聊天页 `_toast`、语音控件两处兜底提示、相册页 / 预览页 / 图片编辑器
+  的轻提示全部改走 `showTopToast`。
+- 同步 `docs/design-handoff/ui-logic.md` §2.14、`tokens.md` §6 动效表。
+
+---
+
 ## v3.1 — 交互态补齐（按下状态）
 
 起因：聊天页点「联网 / 思考 / 上下文」三个芯片，会有一块**比芯片大一圈的灰色矩形闪一下**。

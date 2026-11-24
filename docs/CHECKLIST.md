@@ -116,3 +116,16 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
 - [ ] 参考稿在手机浏览器里点 chip 没有灰色点按高亮（`-webkit-tap-highlight-color: transparent` 生效）。
 - [ ] 工程侧对应实现：`InkWell(splashFactory: NoSplash.splashFactory, highlightColor: transparent, onHighlightChanged: …)`，
       背景按 `_pressed` 切 `transparent` / `high`。
+
+---
+
+## 25. 轻提示（v3.2）：不许贴在底部输入区
+
+- [ ] 任何提示（toast）都出现在**顶部**（状态栏 + 56 + 8），不在底部、不压输入栏。
+- [ ] 提示出现 / 消失时页面**不位移**（浮层，不是插进布局的条）。
+- [ ] 提示不拦手势：出现时还能继续打字、滚动、点按钮。
+- [ ] 同屏只有一条：连续点两次，新的顶掉旧的，不叠成一摞。
+- [ ] 2 秒自动消失；出现动画 120ms（淡入 + 8dp 上浮）。
+- [ ] 工程侧对应实现：`lib/core/ui/toast.dart` 的 `showTopToast()`，**不要**再用
+      `ScaffoldMessenger.showSnackBar`（默认就贴底部）。
+

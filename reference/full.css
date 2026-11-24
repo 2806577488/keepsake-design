@@ -180,6 +180,15 @@ body {
 /* v3.1 按压态：只在关态给本体铺 high 档底，开态保持 p-c 不加深；
    120ms 过渡，不动文字位置（不许改 padding / 字号）。 */
 .chip:active:not(.on):not(.off) { background: var(--high); transition: background-color 120ms ease-in-out; }
+
+/* ── 轻提示 toast（v3.2）──
+   顶部浮层，不参与布局、不拦手势；禁止用底部 SnackBar（会压住输入栏/工具条）。 */
+.toast { position: absolute; top: 64px; left: 16px; right: 16px; display: flex;
+         justify-content: center; pointer-events: none; z-index: 40; }
+.toast .tt { max-width: 480px; background: var(--on-s); color: var(--surface);
+             border-radius: var(--r-card); padding: 12px 16px; font-size: 14px;
+             line-height: 1.4; animation: toast-in 120ms ease-out; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .inputbar { display: flex; align-items: center; gap: 6px; }
 .inputbar .plus, .inputbar .mic { width: 40px; height: 40px; display: grid; place-items: center; color: var(--on-v); flex: 0 0 40px; }
 .field { flex: 1; min-width: 0; min-height: 44px; border-radius: var(--r-field); background: var(--field-bg);

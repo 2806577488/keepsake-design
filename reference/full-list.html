@@ -255,7 +255,8 @@ S['列表 · ⋮ 菜单'] = barNormal() +
   '<div class="sheetacts">' +
   '<div class="row2"><span style="color:var(--on-v)">' + ICON.checklist(20) + '</span><div class="t">重命名</div></div>' +
   '<div class="row2"><span style="color:var(--on-v)">' + ICON.pin(20) + '</span><div class="t">置顶</div></div>' +
-  '<div class="row2"><span style="color:var(--on-v)">' + ICON.chat(20) + '</span><div class="t">为缺少角色卡的会话补建<span class="d">按话题自动建卡</span></div></div>' +
+  // v3.3：不再放「为缺少角色卡的会话补建」——补建是**对全部会话**的批量修复，
+  // 入口只在「设置 › 数据维护 → 修复会话数据」；单条会话的菜单里放它会被理解成只补这一条。
   '<div class="row2" style="color:var(--err-c)"><span>' + ICON.trash(20) + '</span><div class="t">删除会话</div></div>' +
   '</div></div>';
 

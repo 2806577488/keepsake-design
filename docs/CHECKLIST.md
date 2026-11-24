@@ -129,3 +129,14 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
 - [ ] 工程侧对应实现：`lib/core/ui/toast.dart` 的 `showTopToast()`，**不要**再用
       `ScaffoldMessenger.showSnackBar`（默认就贴底部）。
 
+---
+
+## 26. 信息架构（v3.3）：全局操作不进单条菜单
+
+- [ ] 聊天页顶栏 ⋮ **只有「设置」一项**，不许往里塞会话操作。
+- [ ] 「补建角色卡 / 清理孤立角色卡」这类**对全部会话**的修复，入口**只在设置 › 数据维护**；
+      列表行 ⋮ / 聊天页 ⋮ 里都不许出现（会被理解成"只修这一条"）。
+- [ ] 列表行 ⋮ 只有：重命名 / 置顶·取消置顶 / 删除会话。
+- [ ] 检查设计稿时看到单条菜单里有全局操作，先按这条打回，不要"照着画"。
+
+

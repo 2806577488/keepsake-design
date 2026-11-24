@@ -169,7 +169,7 @@ body {
 .pending .thumb .x { position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 9px;
                      background: var(--on-s); color: var(--surface); font-size: 11px; display: grid; place-items: center; }
 .chips { display: flex; gap: 6px; padding: 2px 0 8px; overflow: hidden; }
-.chip { height: 36px; display: inline-flex; align-items: center; gap: 5px; padding: 0 10px;
+.chip { height: 32px; display: inline-flex; align-items: center; gap: 5px; padding: 0 10px;
         border: 1px solid var(--ov); border-radius: var(--r-chip); background: var(--card-bg);
         font-size: 12px; color: var(--on-v); white-space: nowrap;
         font-family: var(--meta-font); letter-spacing: var(--meta-ls);

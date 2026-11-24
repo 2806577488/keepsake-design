@@ -177,7 +177,6 @@ class SkinMorph {
   final double rSend;
   final double rCb;
   final double rRadio;
-  final double fsBody;
   final double fsBar, fsTitle, fsBody, fsSub;
   final double lineHeight;
   final double rowHeight, gap, avatarSize, avatarRadius;
@@ -197,7 +196,6 @@ class SkinMorph {
     required this.rSend,
     required this.rCb,
     required this.rRadio,
-    required this.fsBody,
     required this.fsBar, required this.fsTitle, required this.fsBody, required this.fsSub,
     required this.lineHeight, required this.rowHeight, required this.gap,
     required this.avatarSize, required this.avatarRadius, required this.cardBorderWidth,

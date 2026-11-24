@@ -72,9 +72,8 @@ double iconSize(BuildContext c) => switch (skinOf(c)) {
 ## 两处容易踩的坑
 
 **1. 行内小图标不要用 24。**
-chip 里那三个（联网 / 思考 / 上下文）是 13–14，不是 24。
-Material 图标在 14dp 会糊，所以这三个建议开到 16 再缩——或者直接用 14 的矢量，
-不要 `Icon(size: 13)` 硬缩。
+chip 里那三个（联网 / 思考 / 上下文）是 **15**（SPEC §4.8 硬性要求，工程 `kChipIconSize = 15`），不是 24、也不是 13–14。
+13 及以下 Material 图标会糊——这也是为什么定为 15 而不是更小。
 
 **2. `Icons.stop` 是实心方块。**
 停止生成按钮在 E 皮肤里要配 outlined 的圆形版（`stop_circle_outlined`），

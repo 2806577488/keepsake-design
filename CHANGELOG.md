@@ -1,5 +1,39 @@
 # 版本历史
 
+## v3.1 — 交互态补齐（按下状态）
+
+起因：聊天页点「联网 / 思考 / 上下文」三个芯片，会有一块**比芯片大一圈的灰色矩形闪一下**。
+查下来是**设计缺一个状态 + 工程继承默认行为**两头的问题：
+
+- 规格只定义了「开态 / 关态」两个静态样式，没有「按下」；
+- 工程侧于是用了 Material 默认的 `highlightColor` / `InkSparkle` —— 它按**触摸框（48dp）**画，
+  而芯片本体只有 **32dp**，多出来的那一圈深色在浅色皮肤上非常显眼。
+
+### 设计侧（本次）
+
+- `SPEC.md` §2 新增硬性约束 7：**交互态只允许用底色档位（surface → low → high）或透明度表达**，
+  禁止 Material 默认水波纹 / 灰色高亮。
+- `SPEC.md` §4.8 chip 表补三行：触摸框 48 但底色只画本体 32；关态按下 = `high`（120ms）；
+  开态按下保持 `primary-container` 不加深；反馈方式 = 无 ripple / 无 highlight。
+- `tokens/token-table.md` 新增「交互态」小节：复用 `--high`，**不新增颜色 token**
+  （按压是层级档位，不是新颜色）。
+- `reference/full.css` 补 `.chip:active` 与 `-webkit-tap-highlight-color: transparent`
+  （移动端 WebKit 的灰色点按高亮是同一类问题，HTML 也必须关掉）。
+- `CHECKLIST.md` 新增第 24 条：芯片按压态不许出现灰块。
+
+### 工程侧（同步到 keepsake 仓库）
+
+- `_ToolChip` 改 `StatefulWidget`：`splashFactory: NoSplash.splashFactory`、
+  `splashColor/highlightColor = transparent`、`onHighlightChanged` 记 `_pressed`，
+  背景按 `transparent`（默认）/ `high`（按下）/ `primary-container`（开态）切换。
+- 同步改 `docs/design-handoff/ui-logic.md` §2.8 与 `tokens.md` §6（原来还写着 36 高 / 图标 13 的旧值）。
+
+### Token 变化
+
+无。颜色 token 一条没动，形态表一条没动。
+
+---
+
 ## v3 — 列表改造
 
 列表从「6 条平铺、没有结构」改成有分组、有落点的样子。

@@ -94,6 +94,7 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 4. 零阴影下 FAB 靠 **1px `#8CCDBB` 描边 + surface 底** 浮出。
 5. **E 是衬线皮肤**，主字体必须换成宋体/明朝体（`Songti SC` / `Noto Serif CJK SC` / `SimSun`）。这是三套皮肤气质拉开的关键——三套如果都用黑体，换了等于没换。
 6. **H 的列表行高是 78**，因为字号最大；A 和 E 是 68。
+7. **交互态只允许用底色档位表达**（v3.1）：所有可点元素（chip / 行 / 按钮）的按下反馈只能改「`surface` → `low` → `high` 的档位」或透明度，**禁止** Material 默认的 `highlightColor` 与 `InkSparkle/InkRipple` 水波纹 —— Ink 按**触摸框**画（48dp），而视觉本体只有 32dp，多出来的那一圈深色矩形在浅色皮肤上就是「点一下闪一块灰」。规格见 §4.8。
 
 ## 4. 组件规格
 
@@ -189,6 +190,12 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 | 开态 | `primaryContainer` 底 + `onPrimaryContainer` 字 |
 | 关态 | 透明底 + `outlineVariant` 描边 + `onSurfaceVariant` 字 |
 | 文案格式 | `联网 · 关` / `思考 · 中` / `20 轮`，**用分隔号，别用「思考中」**（会和状态混淆） |
+| **触摸框**（v3.1） | 48（上下各 8 留白），**但底色只画在 32 的本体上**，触点框永远不着色 |
+| **按压态（关态）**（v3.1） | 本体底 = `high`，过渡 120ms；**不动文字位置、不改字号** |
+| **按压态（开态）**（v3.1） | 保持 `primaryContainer`，**不再加深**（再加深就是"整块闪一下"） |
+| **反馈方式**（v3.1） | `splash = none`、`highlight = none`：**禁止** Material 默认水波纹/灰色高亮 |
+
+> 为什么写这条（v3.1）：上一版规格只定义了「开态 / 关态」两个静态样式，没定义"按下"，工程侧就继承了 Material 默认行为——`highlightColor` 与 `InkSparkle` 铺满 **48dp 触点框**，而芯片本体只有 32dp，于是点「联网 / 思考 / 上下文」时肉眼看到的是**一块比芯片大一圈的灰色矩形闪一下**。设计补规格，工程同步改 `NoSplash` + 自绘按压底。
 
 ---
 

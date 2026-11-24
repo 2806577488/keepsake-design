@@ -104,3 +104,15 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
 > 为什么有这条：v3 第一次交付时，`skin_tokens.dart` 里 E 的 `fsTitle` 还是 16，
 > 但改动说明写的是 15——因为改了 HTML 没重新生成 dart。
 > 这种「改了源头忘了同步下游」的错，肉眼几乎发现不了，所以做成脚本。
+
+---
+
+## 24. 交互态（v3.1）：按压不许出灰块
+
+- [ ] 点「联网 / 思考 / 上下文」chip：只有 **32dp 本体**底色变（`high`），
+      **不许**出现比本体大一圈的灰色矩形 / 水波纹（那是 Material 默认 Ink 画在 48dp 触摸框上）。
+- [ ] 开态 chip 按下**不加深**（保持 `primary-container`），避免"整块闪一下"。
+- [ ] 按压时文字不位移：不改 padding / 字号 / 行高，只换底色。
+- [ ] 参考稿在手机浏览器里点 chip 没有灰色点按高亮（`-webkit-tap-highlight-color: transparent` 生效）。
+- [ ] 工程侧对应实现：`InkWell(splashFactory: NoSplash.splashFactory, highlightColor: transparent, onHighlightChanged: …)`，
+      背景按 `_pressed` 切 `transparent` / `high`。

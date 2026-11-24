@@ -1,5 +1,24 @@
 # 版本历史
 
+## v3.5 — 气泡可辨、E 纸色调统一、FAB 描边归位、头像统一圆形
+
+产品裁决（2026-11-24）：**HTML 是审查真值**，设计产出（SPEC / token / dart）跟着 HTML 走。
+
+- **AI 气泡与用户气泡分离**（E-09 / D-17）：三套皮肤的 `--ai-bg` 统一改为 `--low`，
+  `--ai-fg` 改为 `--on-s`。原来 A/H 的 `--p-c` 与 `--ai-bg` 同值，真机上用户与 AI 气泡
+  完全同色，只能靠左右对齐区分。
+- **E 的 AI 气泡改纸色**（D-18）：E 的 `--ai-bg` = `#F1EDE4`（= E 的 `--low`），不再用冷薄荷。
+- **FAB 描边归位**（E-12 / D-30）：SPEC §4.5 与硬性约束 4 都改成「`primaryContainer` 底 + 1px
+  `--fab-line`（`#8CCDBB`）描边」，与 `full.css` 的 `.fab` 一致；token 表补 `--fab-line`。
+- **头像统一圆形**（D-05）：三套 `--av-r` = 17（34 的一半）；HTML 里 E 的 `6px` 改成 `17px`，
+  SPEC §4.2 注明"E 写成 6 会做成圆角方块"。
+- token 表补 `--ai-bg/--ai-fg/--fab-line/--av-r` 四行；不新增颜色语义。
+
+工程侧同步（keepsake）：`skin_tokens.dart` 六套（含深色）的 `aiBg/aiFg` 改为 low/onS、
+E 的 `avatarRadius` 0 → 17、新增 `kFabLineColor` 并在 FAB 上补 1px 描边。
+
+---
+
 ## v3.4 — 清单里"不需要裁决"的自错误清掉
 
 - `tokens/skin_tokens.dart`：删掉重复的 `fsBody` 字段与重复构造参数（**这个文件第一次能编译过**，

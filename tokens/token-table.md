@@ -12,8 +12,8 @@
 | `--on-p-c` | `onPC` | `#005045` | `#5A2E14` | `#005045` |
 | `--send-bg` | `sendBg` | `#A0F2DF` | `#B4481B` | `#1F4A42` |
 | `--send-fg` | `sendFg` | `#005045` | `#FFFFFF` | `#A7E6D5` |
-| `--ai-bg` | `aiBg` | `#A0F2DF` | `#A0F2DF` | `#1F4A42` |
-| `--ai-fg` | `aiFg` | `#005045` | `#005045` | `#A7E6D5` |
+| `--ai-bg` | `aiBg` | `#EFF5F2`（= `--low`） | `#F1EDE4`（= `--low`） | `#EFF5F2`（= `--low`） |
+| `--ai-fg` | `aiFg` | `#191C1B`（= `--on-s`） | `#1A1A18`（= `--on-s`） | `#191C1B`（= `--on-s`） |
 | `--av-bg` | `avBg` | `#DEE4E1` | `#DEE4E1` | `#1F4A42` |
 | `--av-fg` | `avFg` | `#496F66` | `#496F66` | `#A7E6D5` |
 | `--err-c` | `errC` | `#BA1A1A` | `#BA1A1A` | `#BA1A1A` |
@@ -22,6 +22,8 @@
 | `--icon-c` | `iconC` | `#191C1B` | `#191C1B` | `#1F4A42` |
 | `--sel-bg` | `selBg` | `#D9F6EC` | `#F0E4D6` | `#D9F6EC` |
 | `--sel-bar` | `selBar` | `#046B5C` | `#B4481B` | `#046B5C` |
+| `--fab-line` | `fabLine` | `#8CCDBB` | `#8CCDBB` | `#8CCDBB` |
+| `--av-r` | `avatarRadius` | 17px（圆形） | 17px（圆形） | 17px（圆形） |
 
 | 形态 | A 清透 | E 纸感 | H 墨色 |
 |---|---|---|---|

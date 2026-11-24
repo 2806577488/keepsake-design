@@ -58,8 +58,8 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 | `--on-p-c` | `onPC` | `#005045` | `#5A2E14` | `#005045` |
 | `--send-bg` | `sendBg` | `#A0F2DF` | `#B4481B` | `#1F4A42` |
 | `--send-fg` | `sendFg` | `#005045` | `#FFFFFF` | `#A7E6D5` |
-| `--ai-bg` | `aiBg` | `#A0F2DF` | `#A0F2DF` | `#1F4A42` |
-| `--ai-fg` | `aiFg` | `#005045` | `#005045` | `#A7E6D5` |
+| `--ai-bg` | `aiBg` | `#EFF5F2`（=low） | `#F1EDE4`（=low） | `#EFF5F2`（=low） |
+| `--ai-fg` | `aiFg` | `#191C1B`（=on-s） | `#1A1A18`（=on-s） | `#191C1B`（=on-s） |
 | `--av-bg` | `avBg` | `#DEE4E1` | `#DEE4E1` | `#1F4A42` |
 | `--av-fg` | `avFg` | `#496F66` | `#496F66` | `#A7E6D5` |
 | `--err-c` | `errC` | `#BA1A1A` | `#BA1A1A` | `#BA1A1A` |
@@ -91,7 +91,7 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 1. `primaryContainer` 与 `surfaceContainerLow` 的明度差 ≥ 8%，否则 chip 和选中态会糊在一起。
 2. 错误条和停止按钮用 **`errorContainer` + `onErrorContainer`**，不是 `error` 铺满。
 3. 全局**零阴影**：不用 elevation、boxShadow。层次靠 surface → low → high → highest 四档底色。
-4. 零阴影下 FAB 靠 **1px `#8CCDBB` 描边 + surface 底** 浮出。
+4. 零阴影下 FAB 靠 **1px `#8CCDBB` 描边 + `primaryContainer` 底** 浮出（v3.5 定稿：底色按 `full.css` 的 `--p-c`，描边用 `--fab-line`；此前"surface 底"的写法作废）。
 5. **E 是衬线皮肤**，主字体必须换成宋体/明朝体（`Songti SC` / `Noto Serif CJK SC` / `SimSun`）。这是三套皮肤气质拉开的关键——三套如果都用黑体，换了等于没换。
 6. **H 的列表行高是 78**，因为字号最大；A 和 E 是 68。
 7. **交互态只允许用底色档位表达**（v3.1）：所有可点元素（chip / 行 / 按钮）的按下反馈只能改「`surface` → `low` → `high` 的档位」或透明度，**禁止** Material 默认的 `highlightColor` 与 `InkSparkle/InkRipple` 水波纹 —— Ink 按**触摸框**画（48dp），而视觉本体只有 32dp，多出来的那一圈深色矩形在浅色皮肤上就是「点一下闪一块灰」。规格见 §4.8。
@@ -114,7 +114,7 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 |---|---|
 | 行高 | 68（三套一致） |
 | 左右内边距 | 16 |
-| 头像 | 见 `--av-r` |
+| 头像 | 见 `--av-r`（三套统一 17 = 34 的一半，**圆形**；v3.5 前 E 写成 6 会做成圆角方块，已修） |
 | 标题 ↔ 元信息 | 间距 5 |
 | 元信息 | `fs-sub`，`onSurfaceVariant`，E 走等宽 |
 | 分割线 | 1px `outlineVariant`，左缩进 62 |
@@ -151,10 +151,12 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 |---|---|---|
 | 尺寸 | 44 | 56 |
 | 圆角 | `r-send` | `r-fab` = 16 |
-| 底色 | `send-bg` | `surface` |
-| 前景 | `send-fg` | `iconColor` |
-| 描边 | 无 | **1px `#8CCDBB`** |
+| 底色 | `send-bg` | **`primaryContainer`（`--p-c`）** |
+| 前景 | `send-fg` | `onPrimaryContainer`（`--on-p-c`） |
+| 描边 | 无 | **1px `--fab-line`（`#8CCDBB`）** |
 | 阴影 | **无** | **无** |
+
+> v3.5 定稿：底色取 `primaryContainer`（与 `full.css` 的 `.fab` 一致）；"surface 底 + 描边"那套旧写法作废。
 
 ### 4.6 底部弹层 / 对话框
 

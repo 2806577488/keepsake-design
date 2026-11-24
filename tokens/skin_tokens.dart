@@ -87,8 +87,9 @@ class SkinColors {
     onPC: Color(0xFF005045),
     sendBg: Color(0xFFA0F2DF),
     sendFg: Color(0xFF005045),
-    aiBg: Color(0xFFA0F2DF),
-    aiFg: Color(0xFF005045),
+    // v3.5：AI 气泡改 surfaceContainerLow（原来与用户气泡同色，真机看不出谁说的）。
+    aiBg: Color(0xFFEFF5F2),
+    aiFg: Color(0xFF191C1B),
     avBg: Color(0xFFDEE4E1),
     avFg: Color(0xFF496F66),
     errC: Color(0xFFBA1A1A),
@@ -119,8 +120,9 @@ class SkinColors {
     onPC: Color(0xFF5A2E14),
     sendBg: Color(0xFFB4481B),
     sendFg: Color(0xFFFFFFFF),
-    aiBg: Color(0xFFA0F2DF),
-    aiFg: Color(0xFF005045),
+    // v3.5：E 的 AI 气泡从冷薄荷改为纸色（#F1EDE4 = E 的 low），不再破坏暖纸调性。
+    aiBg: Color(0xFFF1EDE4),
+    aiFg: Color(0xFF1A1A18),
     avBg: Color(0xFFDEE4E1),
     avFg: Color(0xFF496F66),
     errC: Color(0xFFBA1A1A),
@@ -151,8 +153,9 @@ class SkinColors {
     onPC: Color(0xFF005045),
     sendBg: Color(0xFF1F4A42),
     sendFg: Color(0xFFA7E6D5),
-    aiBg: Color(0xFF1F4A42),
-    aiFg: Color(0xFFA7E6D5),
+    // v3.5：H 的 AI 气泡改 surfaceContainerLow（原来与用户气泡同为深青）。
+    aiBg: Color(0xFFEFF5F2),
+    aiFg: Color(0xFF191C1B),
     avBg: Color(0xFF1F4A42),
     avFg: Color(0xFFA7E6D5),
     errC: Color(0xFFBA1A1A),
@@ -218,7 +221,8 @@ class SkinMorph {
     rChip: 3, rField: 6, rSend: 6, rCb: 3, rRadio: 3,
     fsBar: 20, fsTitle: 15, fsBody: 16, fsSub: 12.5,
     lineHeight: 1.7, rowHeight: 68, gap: 10,
-    avatarSize: 6, avatarRadius: 6, cardBorderWidth: 1,
+    // v3.5：头像统一圆形（17 = 34 的一半）；原来 E 写 6，做出来是圆角方块。
+    avatarSize: 17, avatarRadius: 17, cardBorderWidth: 1,
     titleWeight: FontWeight.w700, monoForMeta: false,
     iconSize: 24, iconMood: IconMood.outlined,
   );

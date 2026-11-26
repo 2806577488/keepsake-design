@@ -338,7 +338,7 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 | 高度 | 名字/emoji 单行；简介 `minLines=maxLines=3`；人设 `minLines 4 / maxLines 6`；emoji 宽 140 |
 | 弹窗 | 内容区 `maxWidth 420`、`maxHeight = 屏高 × 0.6`、内部滚动 |
 | 保存 | 名字为空 → 禁用 |
-| 人设下方文案 | 「只保存在这张卡上；当前版本不会替代「设置 › AI 平台」里的全局 system prompt。」**禁止**写「留空自动生成」 |
+| 人设下方文案 | 「会追加在「设置 › AI 平台」的全局 system prompt 之后；留空则不注入。」（v3.11：人设真的注入）**禁止**写「留空自动生成」 |
 | 命名 | 生成名 ≤12 字且非问句/非占位，否则「未命名角色」；手工名只 trim，≤24 字 |
 
 ---

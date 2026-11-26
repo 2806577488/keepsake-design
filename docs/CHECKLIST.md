@@ -199,7 +199,8 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
 - [ ] 多行字段圆角是 `rCard`，**不是**胶囊（999）。
 - [ ] 名字为空时「保存」不可点。
 - [ ] 名字像会话标题时给提示，但**不自动改名**。
-- [ ] 人设备注下方有「不会替代全局 system prompt」的说明；**没有**「留空自动生成」这种已失效的承诺。
+- [ ] 人设备注下方有「会追加在全局 system prompt 之后；留空则不注入」的说明；**没有**「留空自动生成」这种已失效的承诺。
+- [ ] 人设非空时确实生效（`【角色设定】` 追加在全局 prompt 之后，超 1200 字截断）。
 - [ ] 弹窗内容超过屏高 60% 时内部滚动，不撑破屏幕。
 - [ ] 工程侧对应实现：`characters_screen.dart` 的 `_CharacterCardDialog`。
 

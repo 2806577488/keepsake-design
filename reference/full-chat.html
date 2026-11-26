@@ -97,7 +97,7 @@ function usage(extra) {
   return '<div class="usage">' + I.eq(16) + '<span>本会话 占用 <b>10%</b> · 缓存命中 <b>33%</b></span>' +
     '<span class="r">' + (extra || '1.3万 / 12.8万') + '</span></div>';
 }
-function chips(mode) {
+function chips(mode, goBottom) {
   const on = '<span class="chip on">';
   const off = '<span class="chip">';
   let h = '<div class="chips">';
@@ -105,7 +105,10 @@ function chips(mode) {
   h += on + I.bulb(15) + '深度思考：开（高）</span>';
   h += off + I.clock(15) + '上下文：最近 20 轮</span>';
   h += off + I.plus(13) + '添加附件</span>';
-  return h + '</div>';
+  h += '</div>';
+  // 「回到底部」：芯片行最右端（同一行、在横向滚动区之外），不单独占行、不压消息文字。
+  if (goBottom) h += '<span class="gobottom">' + I.down(20) + '</span>';
+  return '<div class="chipsrow">' + h + '</div>';
 }
 function inputbar(kind) {
   let right;
@@ -115,8 +118,8 @@ function inputbar(kind) {
   return '<div class="inputbar"><span class="plus">' + I.plus(22) + '</span>' +
     '<span class="field">发消息…</span><span class="mic">' + I.mic(22) + '</span>' + right + '</div>';
 }
-function composer(kind, chipMode) {
-  return '<div class="composer">' + chips(chipMode || 'on') + inputbar(kind) + '</div>';
+function composer(kind, chipMode, goBottom) {
+  return '<div class="composer">' + chips(chipMode || 'on', goBottom) + inputbar(kind) + '</div>';
 }
 
 const CODE = '<div class="code"><div class="h"><span>python</span>' + I.copy(15) + '</div>' +
@@ -183,8 +186,7 @@ S['聊天 · 流式（有正文）'] = chatBar('批量重命名脚本') + usage(
   '<div class="body">下面是一个可以直接使用的批量重命名脚本。用 pathlib 而不是 os.listdir，' +
   '这样在不同平台上行为一致；先排序保证每次运行结果相同；改名之前检查目标是否存在，避免覆盖。</div>' +
   '<div class="streamrow"><span class="spin small"></span></div>' +
-  '</div></div>' + acts(true) + '</div>' +
-  '<div class="gobottom">' + I.down(20) + '</div>' + composer('stop');
+  '</div></div>' + acts(true) + '</div>' + composer('stop', 'on', true);
 
 S['聊天 · 失败'] = chatBar('批量重命名脚本') + usage('读取失败：timeout') +
   '<div class="errbar"><span class="ico">' + I.warn(18) + '</span>' +

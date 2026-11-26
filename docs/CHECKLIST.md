@@ -204,4 +204,15 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
 - [ ] 弹窗内容超过屏高 60% 时内部滚动，不撑破屏幕。
 - [ ] 工程侧对应实现：`characters_screen.dart` 的 `_CharacterCardDialog`。
 
+---
+
+## 32. 大脑分层查看页（v3.12）
+
+- [ ] 只有一张角色卡时不显示选择 chips。
+- [ ] 角色定义区：`v{n} 的定义` + 来源（模型写的 / 规则兜底）+ 正文；点击开版本历史。
+- [ ] 没有定义时显示「再聊几轮会自动写第一版」，不是空白或「暂无」。
+- [ ] 实体列表点开能看到带类型的要点（`[主诉] …`）与「最近聊到」。
+- [ ] 「专业规范」一行点击返回设置页编辑，不在此页就地编辑。
+- [ ] 工程侧对应实现：`brain_layers_screen.dart`。
+
 

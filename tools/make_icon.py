@@ -317,10 +317,13 @@ def write_assets(root: str, variant: str = "light") -> bool:
 def write_store_assets(root: str, variant: str = "light") -> None:
     """商店 / README / 设计库用图（不进 APK）。
 
-    路径按仓库类型选：源码库是 `docs/brand/`，设计库是 `brand/`
-    （设计库里 `docs/` 只放规范文档）。
+    路径按仓库类型选：**源码库**（有 android/app/src/main/res）写 `docs/brand/`，
+    **设计库**（没有 android/）写 `brand/`。
+    不能只看有没有 `docs/` —— 设计库也有 `docs/`（放规范文档），那样会写出
+    `docs/brand/` 和 `brand/` 两份母版图。
     """
-    out = os.path.join(root, "brand" if not os.path.isdir(os.path.join(root, "docs")) else os.path.join("docs", "brand"))
+    has_android = os.path.isdir(os.path.join(root, "android", "app", "src", "main", "res"))
+    out = os.path.join(root, *(["docs", "brand"] if has_android else ["brand"]))
     os.makedirs(out, exist_ok=True)
     compose(512, shape="square", variant=variant).save(
         os.path.join(out, "icon-512.png"), optimize=True

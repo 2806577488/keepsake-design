@@ -30,11 +30,19 @@ Keepsake 是一个本地优先的 Android 聊天应用。这份仓库是它的**
 .
 ├─ SPEC.md                     完整规格（token、组件、红线）
 ├─ CHANGELOG.md                版本历史
+├─ brand/                      应用图标母版与规范图（不随皮肤切换）
+│  ├─ icon-1024.png            母版：方形
+│  ├─ icon-1024-round.png      母版：圆形
+│  ├─ icon-512.png             商店图
+│  ├─ icon-preview.png         各尺寸对比
+│  ├─ icon-masks.png           三种启动器遮罩下的实际显示
+│  └─ icon-safe-zone.png       108dp 自适应安全区标注（含实测半径）
 ├─ docs/
 │  ├─ v3-改动说明.md            相对 v2 改了什么（先看这个）
 │  ├─ 设计师回应-拍板与token表.md  对工程师提出矛盾的逐条拍板
+│  ├─ app-icon.md              应用图标规范（几何 / 安全区 / 改图流程）
 │  ├─ icons.md                 36 个图标映射（Material 官方名）
-│  └─ CHECKLIST.md             23 条验收规则
+│  └─ CHECKLIST.md             验收清单
 ├─ tokens/
 │  ├─ skin_tokens.dart         可直接抄进项目的常量
 │  └─ token-table.md           三套 token 对照表
@@ -47,7 +55,8 @@ Keepsake 是一个本地优先的 Android 聊天应用。这份仓库是它的**
 ├─ screens/                    9 张渲染图（411×892）
 └─ tools/
    ├─ check_consistency.py     设计稿 vs 代码 的一致性校验
-   └─ design_audit.py          静态审计（对比度、圆角、字号、阴影）
+   ├─ design_audit.py          静态审计（对比度、圆角、字号、阴影）
+   └─ make_icon.py             应用图标母版 / 各密度 / 规范图生成
 ```
 
 ---
@@ -126,7 +135,8 @@ python tools/design_audit.py reference/full-list.html reference/full.css
 
 ## 版本
 
-当前 **v3**。变化见 `CHANGELOG.md`，相对上一版的细节见 `docs/v3-改动说明.md`。
+当前 **v3.9**。变化见 `CHANGELOG.md`，相对上一版的细节见 `docs/v3-改动说明.md`；
+应用图标（三套皮肤共用一枚）见 `docs/app-icon.md` 与 `brand/`。
 
 ---
 

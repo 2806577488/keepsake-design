@@ -177,4 +177,17 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
 - [ ] 带附件（文档）且「服务端」→ 自动切外部；外部缺 Key / 地址 → 退回服务端并给顶部 toast 说明（不许静默）。
 - [ ] 工程侧对应实现：`lib/core/search/`、`settings_screen.dart` 的 `_WebSearchDialog`、`chat_screen.dart` 的 `_SearchSourcesView` / 引用角标 / 「正在联网搜索」状态行。
 
+---
+
+## 30. 应用图标（v3.9）
+
+- [ ] 三套皮肤**共用一枚图标**，没有按皮肤画三版，也没有把图标颜色塞进 `SkinTokens`。
+- [ ] 48px 下仍认得出「气泡 + 竖条」；条与条之间没有糊成一块。
+- [ ] 圆形遮罩（72dp）下气泡两端与尾巴都不被切：脚本 `--diagram` 打印的实测半径 ≤ 36dp。
+- [ ] 主题图标（Android 13+）在深色壁纸上可读，声纹是**挖空**的（不是画成黑色）。
+- [ ] 同一个启动器里传统图标与自适应图标形状一致（不会一个圆一个方）。
+- [ ] 工程侧对应实现：`res/mipmap-*/ic_launcher{,_round,_foreground,_monochrome}.png`、
+      `mipmap-anydpi-v26/ic_launcher{,_round}.xml`、`drawable/ic_launcher_background.xml`，
+      `AndroidManifest.xml` 的 `android:icon` + `android:roundIcon`。
+
 

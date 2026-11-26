@@ -154,7 +154,7 @@ body {
 .msgacts .t { display: inline-flex; align-items: center; gap: 5px; }
 .msgacts .t em { font-style: normal; font-size: 12px; line-height: 1; }
 .streamrow { display: flex; align-items: center; gap: 8px; padding: 10px 12px; font-size: 13px; color: var(--on-v); }
-.gobottom { position: absolute; right: 12px; bottom: 190px; width: 36px; height: 36px; border-radius: 18px;
+.gobottom { width: 36px; height: 36px; border-radius: 18px; flex: 0 0 auto;
             background: var(--high); border: 1px solid var(--ov); color: var(--on-s); display: grid; place-items: center; }
 .plainlong { font-size: 15px; line-height: 1.6; color: var(--on-s); }
 .expandmore { display: inline-flex; align-items: center; gap: 5px; margin: 8px 12px 10px; font-size: 12px;
@@ -168,7 +168,8 @@ body {
                   font-size: 11px; color: var(--on-v); }
 .pending .thumb .x { position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 9px;
                      background: var(--on-s); color: var(--surface); font-size: 11px; display: grid; place-items: center; }
-.chips { display: flex; gap: 6px; padding: 2px 0 8px; overflow: hidden; }
+.chipsrow { display: flex; align-items: center; gap: 6px; }
+.chips { display: flex; gap: 6px; padding: 2px 0 8px; overflow: hidden; flex: 1 1 auto; min-width: 0; }
 .chip { height: 32px; display: inline-flex; align-items: center; gap: 5px; padding: 0 10px;
         border: 1px solid var(--ov); border-radius: var(--r-chip); background: var(--card-bg);
         font-size: 12px; color: var(--on-v); white-space: nowrap;

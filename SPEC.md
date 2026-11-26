@@ -323,6 +323,26 @@ SkinScope         // InheritedWidget，向下提供当前 SkinTokens
 
 ---
 
+### 4.12 角色卡表单（v3.10）
+
+> 完整规范见 `docs/character-card.md`；这里只钉工程必须一致的几项。
+
+先明确概念：**App 的角色卡 = 记忆隔离边界 + 只存不用的人设备注**，
+不是 `dsh-brain` 里「由对话塑造的角色」。别再拿它冒充人格层。
+
+| 项 | 规格 |
+|---|---|
+| 字段顺序 | 名字 → 头像 emoji → 简介 → 人设备注（可选） |
+| 外观 | 底 `highest`、1px `ov` 描边、聚焦 1.2px `selBar`、圆角 **`rCard`**（禁止 `rField` 999 胶囊） |
+| 小标题 | 放框**外**（`fs-sub` / `onV`），框内只放 hint |
+| 高度 | 名字/emoji 单行；简介 `minLines=maxLines=3`；人设 `minLines 4 / maxLines 6`；emoji 宽 140 |
+| 弹窗 | 内容区 `maxWidth 420`、`maxHeight = 屏高 × 0.6`、内部滚动 |
+| 保存 | 名字为空 → 禁用 |
+| 人设下方文案 | 「只保存在这张卡上；当前版本不会替代「设置 › AI 平台」里的全局 system prompt。」**禁止**写「留空自动生成」 |
+| 命名 | 生成名 ≤12 字且非问句/非占位，否则「未命名角色」；手工名只 trim，≤24 字 |
+
+---
+
 ## 5. 落地顺序（照这个顺序做，省得返工）
 
 1. **先做 token 层**：`SkinTokens` + `SkinScope`，三套数据填满，写一个隐藏入口能在 App 内切皮肤。

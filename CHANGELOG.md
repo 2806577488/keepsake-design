@@ -1,5 +1,29 @@
 # 版本历史
 
+## v3.10 — 角色卡表单规范（附：为什么会「长出奇怪的卡」）
+
+起因：用户截了一张「编辑角色卡」的图——一个普通问答会话变成角色卡，名字是整句会话标题
+（「妈的现在的中医熟地24g都开出来了」），弹窗像四个灰药丸：胶囊圆角、label 掉在框外、
+简介是一整块 100dp 空白、人设框里塞着自动生成的「你是「…」」。
+
+- **新增 `docs/character-card.md`**：先讲清 App 的「角色卡」= 记忆隔离边界 + 只存不用的人设
+  备注（**不是** `dsh-brain` 里由对话塑造的角色）；再给表单结构、字段外观（圆角用
+  `rCard` 不用 `rField`）、文案、命名规则与验收。
+- **SPEC §4.12** 同步：角色卡表单按上面执行。
+- **CHECKLIST §31**：7 条验收（字段高度节奏 / label 位置 / 圆角 / 保存禁用 / 像标题的提示 /
+  人设"不生效"说明 / 内容区滚动）。
+- **纠正一条旧文案**：人设字段不再写「留空自动生成」——自动生成已停用，这么写是骗人。
+
+工程侧同步（keepsake，0.4.33）：`character_service.dart` 的 `characterNameFor` 严格化 +
+`ensureForSession` 复用默认记忆域；`characters_screen.dart` 的 `_CharacterCardDialog` 重做；
+落地记录见源码库 `docs/character-card-2026-11-26.md`。
+
+### Token 变化
+
+无。全部用现有 token（`rCard` / `highest` / `ov` / `selBar` / `fs-sub` / `onV`）。
+
+---
+
 ## v3.9 — 有了正式的应用图标（声纹气泡）
 
 起因：0.4.31 及之前 `mipmap-*/ic_launcher.png` 一直是 **Flutter 默认图标**（浅蓝 Z 字），

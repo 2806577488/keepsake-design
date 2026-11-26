@@ -190,4 +190,17 @@ python check_consistency.py --ref reference/full-list.html --dart skin_tokens.da
       `mipmap-anydpi-v26/ic_launcher{,_round}.xml`、`drawable/ic_launcher_background.xml`，
       `AndroidManifest.xml` 的 `android:icon` + `android:roundIcon`。
 
+---
+
+## 31. 角色卡表单（v3.10）
+
+- [ ] 四个字段高度有节奏（单行 / 简介 3 行 / 人设 4–6 行），不是四块一样大的灰块。
+- [ ] 小标题在框**外**，不压边框、不掉进框里。
+- [ ] 多行字段圆角是 `rCard`，**不是**胶囊（999）。
+- [ ] 名字为空时「保存」不可点。
+- [ ] 名字像会话标题时给提示，但**不自动改名**。
+- [ ] 人设备注下方有「不会替代全局 system prompt」的说明；**没有**「留空自动生成」这种已失效的承诺。
+- [ ] 弹窗内容超过屏高 60% 时内部滚动，不撑破屏幕。
+- [ ] 工程侧对应实现：`characters_screen.dart` 的 `_CharacterCardDialog`。
+
 

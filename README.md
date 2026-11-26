@@ -135,7 +135,7 @@ python tools/design_audit.py reference/full-list.html reference/full.css
 
 ## 版本
 
-当前 **v3.9**。变化见 `CHANGELOG.md`，相对上一版的细节见 `docs/v3-改动说明.md`；
+当前 **v3.13**。变化见 `CHANGELOG.md`；本版交互细则见 `docs/interactions-v313.md`；
 应用图标（三套皮肤共用一枚）见 `docs/app-icon.md` 与 `brand/`。
 
 ---
